@@ -1,5 +1,14 @@
 @sanity
 Feature: Comptuer Database Portal is reachable and displays default web content
+  Scenario Outline: Loading Computer Database URL in a browser takes me to the home page
+    Given I open a <browser_type> web browser
+    When I load the Computer Database Portal into the web browser
+    Then I should see the Computer Database home page URL
+
+    Examples:
+      | browser_type |
+      | Chrome       |
+
 
   Scenario Outline: Visiting the Computer Databasae Portal
     Given I open a <browser_type> web browser
