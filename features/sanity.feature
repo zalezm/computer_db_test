@@ -1,3 +1,4 @@
+@sanity
 Feature: Comptuer Database Portal is reachable and displays default web content
 
   Scenario Outline: Visiting the Computer Databasae Portal
