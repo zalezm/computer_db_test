@@ -3,7 +3,7 @@ from selenium import webdriver
 import os
 from enum import Enum
 from time import sleep
-from computer_db_pom.home_page import HomePage
+from computer_db_pom.computers_page import ComputersPage
 
 COMPUTER_DATABASE_URL = 'https://computer-database.herokuapp.com/'
 WEB_DRIVER_DIR = 'web_drivers'
@@ -30,13 +30,16 @@ def step_impl(context):
 
 @when(u'I load the Computer Database Portal into the web browser')
 def step_impl(context):
-    context.web_driver.get(COMPUTER_DATABASE_URL)
+    context.current_page = ComputersPage(context.web_driver)
+    assert context.current_page.load_url(COMPUTER_DATABASE_URL), 'Failed to load URL {}'.format(COMPUTER_DATABASE_URL)
+    # TODO: remove static sleep
     sleep(3)
-    print(context.web_driver.title)
-    sleep(3)
+    print('Current URL: {}'.format(context.web_driver.current_url))
 
 
-@then(u'I should see the Computer Database landing page')
+@then(u'I should see the Computer Database home page')
 def step_impl(context):
-    assert context.web_driver.title == HomePage.TITLE, \
-        'Expecting home page title {}, got {}'.format(HomePage.TITLE, context.web_driver.title)
+    assert context.current_page.has_expected_title(), \
+        'Expecting home page title {}, got {}'.format(ComputersPage.TITLE, context.web_driver.title)
+    # TODO: remove static sleep
+    sleep(3)
