@@ -5,7 +5,6 @@ from enum import Enum
 from time import sleep
 from computer_db_pom.computers_page import ComputersPage
 
-COMPUTER_DATABASE_URL = 'https://computer-database.herokuapp.com/'
 WEB_DRIVER_DIR = 'web_drivers'
 
 
@@ -31,7 +30,7 @@ def step_impl(context):
 @when(u'I load the Computer Database Portal into the web browser')
 def step_impl(context):
     context.current_page = ComputersPage(context.web_driver)
-    assert context.current_page.load_url(COMPUTER_DATABASE_URL), 'Failed to load URL {}'.format(COMPUTER_DATABASE_URL)
+    assert context.current_page.load_url(ComputersPage.URL), 'Failed to load URL {}'.format(ComputersPage.URL)
     # TODO: remove static sleep
     sleep(3)
     print('Current URL: {}'.format(context.web_driver.current_url))
@@ -39,8 +38,12 @@ def step_impl(context):
 
 @then(u'I should see the Computer Database home page URL')
 def step_impl(context):
-    assert context.current_page.has_expected_url(), \
-        'Incorrect URL loaded: {}'.format(context.current_page.get_url())
+    expected_url = ComputersPage.URL + context.current_page.URI
+    print(expected_url)
+    print(context.current_page.get_url())
+
+    assert expected_url == context.current_page.get_url(), \
+        'Expecting URL {}; got {}'.format(expected_url, context.current_page.get_url())
     # TODO: remove static sleep
     sleep(2)
 
