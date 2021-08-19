@@ -29,7 +29,8 @@ def step_impl(context, button_name):
 
 @then(u'I should see the Computers Search Results page')
 def step_impl(context):
-    url_query = urlencode({'f': context.search_phrase})
+    search_phrase = getattr(context, 'search_phrase', '')
+    url_query = urlencode({'f': search_phrase})
     expected_url = urljoin(ComputersPage.URL, ComputersPage.URI) + '?{}'.format(url_query)
 
     assert expected_url == context.current_page.get_url(), \
