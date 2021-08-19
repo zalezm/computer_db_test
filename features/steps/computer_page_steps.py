@@ -1,7 +1,8 @@
 from behave import given, when, then
-from computer_db_pom.computers_page import ComputersPage
+from computer_db_pom.pages.computers_page import ComputersPage
 from time import sleep
 from urllib.parse import urljoin, urlencode
+
 
 @given(u'I see the Computer Database home page')
 def step_impl(context):
@@ -14,13 +15,14 @@ def step_impl(context):
 @when(u'I enter "{search_phrase}" in the search box')
 def step_impl(context, search_phrase):
     context.search_phrase = search_phrase
-    assert context.current_page.input_search(search_phrase), 'Failed to enter search phrase'
+    assert context.current_page.get_action_header().input_search(search_phrase), 'Failed to enter search phrase'
 
 
 @when(u'I click the "{button_name}" button')
 def step_impl(context, button_name):
     if button_name == 'search submit':
-        assert context.current_page.click_search_submit_button(), 'Failed to click search submit button'
+        assert context.current_page.get_action_header().click_search_submit_button(), \
+            'Failed to click search submit button'
     else:
         raise AssertionError('Unknown button {}'.format(button_name))
 

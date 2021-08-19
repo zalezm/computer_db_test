@@ -3,7 +3,7 @@ from selenium import webdriver
 import os
 from enum import Enum
 from time import sleep
-from computer_db_pom.computers_page import ComputersPage
+from computer_db_pom.pages.computers_page import ComputersPage
 
 WEB_DRIVER_DIR = 'web_drivers'
 

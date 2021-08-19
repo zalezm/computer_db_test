@@ -1,33 +1,20 @@
-from computer_db_pom.common.base_page import BasePage
+from computer_db_pom.components.common.base_component import BaseComponent
 
 
-class ComputersPage(BasePage):
-    TITLE = 'Computers database'
-    URI = '/computers'
-    MAIN_CONTENT_ELEMENT_ID = 'main'
+class ActionHeader(BaseComponent):
     ACTIONS_HEADER_ELEMENT_ID = 'actions'
     ACTIONS_SEARCH_BOX_ELEMENT_ID = 'searchbox'
     ACTIONS_SEARCH_SUBMIT_BUTTON_ELEMENT_ID = 'searchsubmit'
     ACTIONS_ADD_COMPUTER_BUTTON_ELEMENT_ID = 'add'
-    COMPUTERS_TABLE_CLASS_NAME = 'computers zebra-striped'
 
     def __init__(self, web_driver):
-        super().__init__(web_driver, self.TITLE, self.URI)
-
-    def get_main_content(self):
-        return self.get_element_by_id(self.MAIN_CONTENT_ELEMENT_ID)
-
-    def has_main_content(self):
-        return bool(self.get_main_content())
+        super().__init__(web_driver)
 
     def get_action_header(self):
         return self.get_element_by_id(self.ACTIONS_HEADER_ELEMENT_ID)
 
     def has_action_header(self):
         return bool(self.get_action_header())
-
-    def has_page_content(self):
-        return self.has_main_content() and self.has_action_header()
 
     def get_search_box(self):
         return self.get_element_by_id(self.ACTIONS_SEARCH_BOX_ELEMENT_ID)

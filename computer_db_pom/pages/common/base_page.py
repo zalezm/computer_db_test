@@ -1,9 +1,10 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from urllib.parse import urlparse
+from abc import ABC
 
 
-class BasePage(object):
+class BasePage(ABC):
     URL = 'https://computer-database.herokuapp.com'
 
     def __init__(self, web_driver: webdriver, title: str, uri: str):
