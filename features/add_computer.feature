@@ -8,7 +8,6 @@ Feature: Users can add a computer by clicking the add button on the main portal
 
   @sanity
   @ADD01
-  @skip
   Scenario: Add Computer page is visible
     Given I see the Computer Database home page
     When I click the "add a new computer" button

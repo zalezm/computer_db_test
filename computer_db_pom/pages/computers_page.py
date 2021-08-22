@@ -4,12 +4,11 @@ from computer_db_pom.components.computers_table import ComputersTable
 
 
 class ComputersPage(BasePage):
-    TITLE = 'Computers database'
     URI = '/computers'
     MAIN_CONTENT_ELEMENT_ID = 'main'
 
     def __init__(self, web_driver):
-        super().__init__(web_driver, self.TITLE, self.URI)
+        super().__init__(web_driver, self.URI)
         self._action_header = ActionHeader(web_driver)
         self._computers_table = ComputersTable(web_driver)
 

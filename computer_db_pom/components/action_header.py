@@ -56,3 +56,13 @@ class ActionHeader(BaseComponent):
             print('No search submit button found')
 
         return False
+
+    def click_add_computer_button(self):
+        add_computer_button = self.get_add_computer_button()
+        if add_computer_button:
+            add_computer_button.click()
+            return True
+        else:
+            print('No add computer button found')
+
+        return False

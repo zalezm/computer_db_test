@@ -46,12 +46,3 @@ def step_impl(context):
         'Expecting URL {}; got {}'.format(expected_url, context.current_page.get_url())
     # TODO: remove static sleep
     sleep(2)
-
-
-@then(u'I should see the Computer Database home page')
-def step_impl(context):
-    assert context.current_page.has_expected_title(), \
-        'Expecting home page title {}, got {}'.format(context.current_page.title, context.current_page.get_title())
-    assert context.current_page.has_page_content(), 'Page content was not found!'
-    # TODO: remove static sleep
-    sleep(2)

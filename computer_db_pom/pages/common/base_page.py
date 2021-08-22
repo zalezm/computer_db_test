@@ -6,9 +6,10 @@ from abc import ABC
 
 class BasePage(ABC):
     URL = 'https://computer-database.herokuapp.com'
+    TITLE = 'Computers database'
 
-    def __init__(self, web_driver: webdriver, title: str, uri: str):
-        self.title = title
+    def __init__(self, web_driver: webdriver, uri: str):
+        self.title = self.TITLE
         self._web_driver = web_driver
         self.uri = uri
 

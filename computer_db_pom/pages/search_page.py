@@ -4,12 +4,12 @@ from computer_db_pom.components.computers_table import ComputersTable
 
 
 class SearchPage(BasePage):
-    TITLE = 'Computers database'
+    URI = '/computers'
     URI_TEMPLATE = '/computers?f={}'
     MAIN_CONTENT_ELEMENT_ID = 'main'
 
     def __init__(self, web_driver, search_phrase, search_phrase_escaped: str):
-        super().__init__(web_driver, self.TITLE, self.URI_TEMPLATE.format(search_phrase_escaped))
+        super().__init__(web_driver, self.URI_TEMPLATE.format(search_phrase_escaped))
         self.search_phrase = search_phrase
         self.search_phrase_escaped = search_phrase_escaped
         self._action_header = ActionHeader(web_driver)
