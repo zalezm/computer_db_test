@@ -47,9 +47,13 @@ Users can execute runs targeting a specific tag or tags, thereby running only th
 * `sanity` - subset of tests marked for sanity test runs, validating basic functionality
 * `search` - subset of tests for Search Computers functionality
 * `add`    - subset of tests for Add Computer functionality
+* `edit`   - subset of tests for Edit Computer functionality
+* `delete` - subset of tests for Delete Computer functionality
 * `SAN[0-9][0-9]` - specific Scenario tagging for Sanity Feature File Scenarios
 * `SEA[0-9][0-9]` - specific Scenario tagging for Search Computers Feature File Scenarios
 * `ADD[0-9][0-9]` - specific Scenario tagging for Add Computer Feature File Scenarios
+* `EDI[0-9][0-9]` - specific Scenario tagging for Edit Computer Feature File Scenarios
+* `DEL[0-9][0-9]` - specific Scenario tagging for Delete Computer Feature File Scenarios
 
 #### Examples
 * Running sanity tests: `behave -t sanity`
